@@ -1,4 +1,4 @@
-from restore import restore_file
+from exploit.restore import restore_file
 from pathlib import Path
 import plistlib
 from dataclasses import dataclass
