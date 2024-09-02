@@ -143,7 +143,7 @@ while running:
                 with open(gestalt_path, 'wb') as out_fp:
                     plistlib.dump(plist, out_fp)
                 restore_file(fp=gestalt_path, restore_path='/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/', restore_name='com.apple.MobileGestalt.plist')
-                input("Success! Reboot your device to see the changes.\n\nIf you've enabled Always-On Display or Stage Manager, use our helper shortcut at https://routinehub.co/download/48967/ to enable functionality.")
+                input("Success! Reboot your device to see the changes.\n\nIf you've enabled Always-On Display or Stage Manager, use our helper shortcut at https://routinehub.co/shortcut/19597/ to enable functionality.")
             case 11:
                 print('Goodbye!')
                 running = False
@@ -160,7 +160,7 @@ while running:
                                   
 """)
         print('No MobileGestalt file found!')
-        print('You can get the file from your device with this shortcut: https://routinehub.co/download/48967/')
+        print('You can get the file from your device with this shortcut: https://routinehub.co/shortcut/19597/')
         print(f"Place the file in '{Path.cwd()}' with the name 'com.apple.MobileGestalt.plist'")
         print('Remember to make a backup!!\n')
         print('1. Retry')
