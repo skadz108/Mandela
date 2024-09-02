@@ -35,6 +35,10 @@ baseKeys = {
         path="CacheExtra.j8/Omm6s1lsmTDFsXjsBfA",
         value=True
     ),
+    "alwaysOnDisplayFix": GestaltKey(
+        path="CacheExtra.2OOJf1VhaM7NxfRok3HbWQ",
+        value=True
+    ),
     "stageManager": GestaltKey(
         path="CacheExtra.qeaj75wk3HF4DwQ8qbIi7g",
         value=True
@@ -102,15 +106,16 @@ while running:
         print(f"1. {('[Y] ' if isSelected(0) else '')}Toggle Dynamic Island")
         print(f"2. {('[Y] ' if current_model_name != '' else '')}Set Device Model Name")
         print(f"3. {('[Y] ' if isSelected(2) else '')}Toggle Always On Display")
-        print(f"4. {('[Y] ' if isSelected(3) else '')}Toggle Stage Manager")
-        print(f"5. {('[Y] ' if isSelected(4) else '')}Disable Wallpaper Parallax")
-        print(f"6. {('[Y] ' if isSelected(5) else '')}Toggle Boot Chime")
-        print(f"7. {('[Y] ' if isSelected(6) else '')}Enable Apple Pencil (doesn't actually function)")
-        print(f"8. {('[Y] ' if isSelected(7) else '')}Enable 80% Charging Limit")
-        print(f"9. {('[Y] ' if isSelected(8) else '')}(DANGEROUS) Enable Internal Build (USE AT YOUR OWN RISK)")
-        print('10. Apply')
-        print('11. Exit\n')
-        print('12. (Debug) Print Selected Tweaks\n')
+        print(f"4. {('[Y] ' if isSelected(3) else '')}Toggle Always On Display Fix (iOS 18db8+ only)")
+        print(f"5. {('[Y] ' if isSelected(4) else '')}Toggle Stage Manager")
+        print(f"6. {('[Y] ' if isSelected(5) else '')}Disable Wallpaper Parallax")
+        print(f"7. {('[Y] ' if isSelected(6) else '')}Toggle Boot Chime")
+        print(f"8. {('[Y] ' if isSelected(7) else '')}Enable Apple Pencil (doesn't actually function)")
+        print(f"9. {('[Y] ' if isSelected(8) else '')}Enable 80% Charging Limit")
+        print(f"10. {('[Y] ' if isSelected(9) else '')}(DANGEROUS) Enable Internal Build (USE AT YOUR OWN RISK)")
+        print('11. Apply')
+        print('12. Exit\n')
+        print('13. (Debug) Print Selected Tweaks\n')
         page = int(input('Enter a number: '))
         
         match page:
@@ -136,6 +141,8 @@ while running:
             case 9:
                 toggleTweakSelection(8)
             case 10:
+                toggleTweakSelection(9)
+            case 11:
                 print()
                 with open(gestalt_path, 'rb') as in_fp:
                     plist = plistlib.load(in_fp)
@@ -144,10 +151,10 @@ while running:
                     plistlib.dump(plist, out_fp)
                 restore_file(fp=gestalt_path, restore_path='/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/', restore_name='com.apple.MobileGestalt.plist')
                 input("Success! Reboot your device to see the changes.\n\nIf you've enabled Always-On Display or Stage Manager, use our helper shortcut at https://routinehub.co/shortcut/19597/ to enable functionality.")
-            case 11:
+            case 12:
                 print('Goodbye!')
                 running = False
-            case 12:
+            case 13:
                 print(selectedTweaks)
     else:
         print(r"""
