@@ -1,5 +1,5 @@
 # Mandela
-A simple iOS customization tool based on sparserestore. Works up to iOS 18.0db8.
+A simple iOS customization tool based on [Nugget](https://github.com/leminlimez/Nugget). Works up to iOS 18.0db8.
 
 ## Usage
 - Install pymobiledevice3 (`pip install pymobiledevice3`)
