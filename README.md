@@ -15,4 +15,5 @@ A simple iOS customization tool based on sparserestore. Works up to iOS 18.0db8.
 - [TrollRestore](https://github.com/JJTech0130/TrollRestore/tree/main/sparserestore) for sparserestore, the library used for restoring files
 - [Nugget](https://github.com/leminlimez/Nugget) for some UI components
 - [EUEnabler](https://github.com/Lrdsnow/EUEnabler) for `restore.py`
+- [dootskyre](https://github.com/dootskyre) for the helper shortcut
 - Special thanks to [Lrdsnow](https://github.com/Lrdsnow) and [Little_34306](https://github.com/34306) for assistance
