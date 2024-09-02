@@ -9,6 +9,7 @@ A simple iOS customization tool based on sparserestore. Works up to iOS 18.0db8.
 - Apply tweaks
 - Reboot device
 - Profit
+
 **If you enable Always-On Display or Stage Manager, you'll need to re-run the shortcut to enable full functionality.**
 
 ## Credits
