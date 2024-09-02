@@ -12,6 +12,11 @@ A simple iOS customization tool based on sparserestore. Works up to iOS 18.0db8.
 
 **If you enable Always-On Display or Stage Manager, you'll need to re-run the shortcut to enable full functionality.**
 
+## TODOs
+- Reverting tweaks 💀
+- Custom MobileGestalt key tweaks
+- More bug fixes
+
 ## Credits
 - [Nugget](https://github.com/leminlimez/Nugget) for the exploit library and some UI components
 - [EUEnabler](https://github.com/Lrdsnow/EUEnabler) for `restore.py`
