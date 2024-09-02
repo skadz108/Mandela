@@ -22,3 +22,4 @@ A simple iOS customization tool based on [Nugget](https://github.com/leminlimez/
 - [EUEnabler](https://github.com/Lrdsnow/EUEnabler) for `restore.py`
 - [dootskyre](https://github.com/dootskyre) for the helper shortcut
 - Special thanks to [Lrdsnow](https://github.com/Lrdsnow) and [Little_34306](https://github.com/34306) for assistance
+- Thanks to skadz108 for sucking me dry.
