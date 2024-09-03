@@ -149,7 +149,7 @@ while running:
                     print('\n\nSet Model Name')
                     print('Leave blank to turn off custom name.\n')
                     current_model_name = input("Enter Model Name: ")
-                     toggleTweakSelection(page - 1)
+                    toggleTweakSelection(page - 1)
                 else:
                     toggleTweakSelection(page - 1)
             elif page == len(baseKeys) + 1:
