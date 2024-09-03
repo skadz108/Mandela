@@ -97,8 +97,11 @@ def isSelected(id):
     return baseKeys[id] in selectedTweaks
 
 def applyTweaks(plist):
-    for index, gestalt_key in enumerate(baseKeys):
-        if isSelected(index):
+    for gestalt_key in selectedTweaks:
+        if gestalt_key.name == "Set Model Name":
+            if current_model_name: 
+                applyOperation(plist, gestalt_key.path, current_model_name)
+        else:
             applyOperation(plist, gestalt_key.path, gestalt_key.value)
 
 while running:
