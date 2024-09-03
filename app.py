@@ -41,7 +41,7 @@ baseKeys = [
     GestaltKey(
         path="CacheExtra.oPeik/9e8lQWMszEjbPzng.ArtworkDeviceProductDescription",
         value = current_model_name,
-        name = "Set Model Name (broken lol)"
+        name = "Set Model Name"
     ),
     GestaltKey(
         path = "CacheExtra.j8/Omm6s1lsmTDFsXjsBfA",
