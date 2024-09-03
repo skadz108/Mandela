@@ -1,24 +1,30 @@
 from exploit.restore import restore_file
 from pathlib import Path
-import json
 import plistlib
 from dataclasses import dataclass
 from typing import List, Any
+import shutil
 running = True
 passed_check = False
 current_model_name = ''
 gestalt_path = Path.joinpath(Path.cwd(), 'com.apple.MobileGestalt.plist')
-selected_tweaks_file = Path.joinpath(Path.cwd(), 'selected_tweaks.json')
+backup_path = Path.joinpath(Path.cwd(), 'MobileGestalt-Backup-DO-NOT-MODIFY.plist')
 
-def load_selected_tweaks():
-    if selected_tweaks_file.exists():
-        with open(selected_tweaks_file, 'r') as f:
-            return json.load(f)
-    return []
+def create_backup():
+    if not backup_path.exists():
+        shutil.copy(gestalt_path, backup_path)
+        print("Backup created successfully.")
+    else:
+        return
 
-def save_selected_tweaks():
-    with open(selected_tweaks_file, 'w') as f:
-        json.dump([tweak.path for tweak in selectedTweaks], f)
+def applyOperation(plist, key_path, value):
+    path_parts = key_path.split('.')
+    for part in path_parts[:-1]:
+        if part not in plist:
+            plist[part] = {}
+        plist = plist[part]
+    
+    plist[path_parts[-1]] = value
 
 @dataclass
 class GestaltKey:
@@ -35,7 +41,7 @@ baseKeys = [
     GestaltKey(
         path="CacheExtra.oPeik/9e8lQWMszEjbPzng.ArtworkDeviceProductDescription",
         value = current_model_name,
-        name = "Set Model Name"
+        name = "Set Model Name (broken lol)"
     ),
     GestaltKey(
         path = "CacheExtra.j8/Omm6s1lsmTDFsXjsBfA",
@@ -81,57 +87,36 @@ baseKeys = [
 
 selectedTweaks: List[GestaltKey] = []
 def toggleTweakSelection(id):
-    tweak = baseKeys[id]
+    tweak = list(baseKeys.values())[id]
     if tweak not in selectedTweaks:
         selectedTweaks.append(tweak)
     else:
         selectedTweaks.remove(tweak)
-    save_selected_tweaks()
-
-def initialize_tweaks():
-    global selectedTweaks
-    saved_tweaks = load_selected_tweaks()
-    selectedTweaks = [tweak for tweak in baseKeys if tweak.path in saved_tweaks]
 
 def isSelected(id):
-    return baseKeys[id].path in [tweak.path for tweak in selectedTweaks]
+    return baseKeys[id] in selectedTweaks
 
 def applyTweaks(plist):
-    for gestalt_key in baseKeys:
-        path_parts = gestalt_key.path.split('.')
-        current = plist
-        for part in path_parts[:-1]:
-            if part not in current:
-                if gestalt_key in selectedTweaks:
-                    current[part] = {}
-                else:
-                    break
-            current = current[part]
-        
-        if gestalt_key in selectedTweaks:
-            current[path_parts[-1]] = gestalt_key.value
-        elif path_parts[-1] in current:
-            del current[path_parts[-1]]
+    for index, gestalt_key in enumerate(baseKeys):
+        if isSelected(index):
+            applyOperation(plist, gestalt_key.path, gestalt_key.value)
 
 while running:
     if not passed_check and Path.exists(gestalt_path) and Path.is_file(gestalt_path):
         passed_check = True
     if passed_check:
+        create_backup()
         print(r"""
-        __  __                 _      _                
-        |  \/  |               | |    | |               
-        | \  / | __ _ _ __   __| | ___| | __ _          
-        | |\/| |/ _` | '_ \ / _` |/ _ \ |/ _` |         
-        | |  | | (_| | | | | (_| |  __/ | (_| |         
-        |_|  |_|\__,_|_| |_|\__,_|\___|_|\__,_| _       
-                                    | |    (_) |      
-                                    | |     _| |_ ___ 
-                                    | |    | | __/ _ \
-                                    | |____| | ||  __/
-                                    |______|_|\__\___|
+        __  __                 _      _       
+        |  \/  |               | |    | |      
+        | \  / | __ _ _ __   __| | ___| | __ _ 
+        | |\/| |/ _` | '_ \ / _` |/ _ \ |/ _` |
+        | |  | | (_| | | | | (_| |  __/ | (_| |
+        |_|  |_|\__,_|_| |_|\__,_|\___|_|\__,_|
+              
                     Public Release
 
-            Uses sparserestore by JJTech
+                Based on Codename Nugget
                     Written by Skadz
         Special thanks to Lrdsnow & Little_34306
 """)
@@ -146,6 +131,7 @@ while running:
         print('11. Apply')
         print('12. Exit\n')
         print('13. (Debug) Print Selected Tweaks\n')
+        print("14. Revert All Tweaks & Restore MobileGestalt Backup\n")
         page = None
         try:
             user_input = input('Enter a number: ')
@@ -180,6 +166,9 @@ while running:
                 running = False
             elif page == len(baseKeys) + 3:
                 print(selectedTweaks)
+            elif page == len(baseKeys) + 4:
+                restore_file(fp=backup_path, restore_path='/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/', restore_name='com.apple.MobileGestalt.plist')
+                print("Your original MobileGestalt has successfully been restored. Force reboot your device for this to take effect.")
         else:
             print("Please select an option")
     else:
