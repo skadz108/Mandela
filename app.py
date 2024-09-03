@@ -87,7 +87,7 @@ baseKeys = [
 
 selectedTweaks: List[GestaltKey] = []
 def toggleTweakSelection(id):
-    tweak = list(baseKeys.values())[id]
+    tweak = baseKeys[id]
     if tweak not in selectedTweaks:
         selectedTweaks.append(tweak)
     else:
