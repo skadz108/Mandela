@@ -6,7 +6,7 @@ from typing import List, Any
 import shutil
 running = True
 passed_check = False
-current_model_name = ''
+current_model_name = ""
 gestalt_path = Path.joinpath(Path.cwd(), 'com.apple.MobileGestalt.plist')
 backup_path = Path.joinpath(Path.cwd(), 'MobileGestalt-Backup-DO-NOT-MODIFY.plist')
 
@@ -148,8 +148,8 @@ while running:
                 if key.name == "Set Model Name":
                     print('\n\nSet Model Name')
                     print('Leave blank to turn off custom name.\n')
-                    name = input('Enter Model Name: ')
-                    current_model_name = name
+                    current_model_name = input("Enter Model Name: ")
+                     toggleTweakSelection(page - 1)
                 else:
                     toggleTweakSelection(page - 1)
             elif page == len(baseKeys) + 1:
@@ -165,10 +165,10 @@ while running:
                 print('Thank you for using Mandela!')
                 running = False
             elif page == len(baseKeys) + 3:
-                print(selectedTweaks)
+                input(selectedTweaks)
             elif page == len(baseKeys) + 4:
                 restore_file(fp=backup_path, restore_path='/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/', restore_name='com.apple.MobileGestalt.plist')
-                print("Your original MobileGestalt has successfully been restored. Force reboot your device for this to take effect.")
+                input("Your original MobileGestalt has successfully been restored. Force reboot your device for this to take effect.")
         else:
             print("Please select an option")
     else:
