@@ -1,15 +1,16 @@
-
 # Mandela
 A simple iOS customization tool based on [Codename Nugget](https://github.com/leminlimez/Nugget). Works up to iOS 18.0db8.
 
 ## Usage
-- Install pymobiledevice3 (`pip install pymobiledevice3`)
+- Install `pymobiledevice3` in your Python environment
 - Run `app.py`
 - On first run, you'll be prompted to get the MobileGestalt file from your device. Send the shortcut link to your device, run it with Shortcuts, and put the file in the same folder as `app.py`
 - Select your tweaks
 - Apply tweaks
 - Reboot device
 - Profit
+
+**Find My must be disabled before applying. This is a limitation of stock iOS when restoring backups. You may re-enable Find My after applying your tweaks.**
 
 **If you enable Always-On Display or Stage Manager, you'll need to re-run the shortcut to enable full functionality.**
 
