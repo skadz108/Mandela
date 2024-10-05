@@ -1,5 +1,7 @@
 # Mandela
-A simple iOS customization tool based on [Codename Nugget](https://github.com/leminlimez/Nugget). Works up to iOS 18.0db8.
+A simple iOS customization tool based on [Nugget](https://github.com/leminlimez/Nugget). Works up to iOS 18.0db8.
+
+### Note: This is extreme levels of ass. It is recommended to use [Nugget](https://github.com/leminlimez/Nugget) instead unless you'd like an STD.
 
 ## Usage
 - Install `pymobiledevice3` in your Python environment
