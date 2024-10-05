@@ -26,7 +26,7 @@ Mandela uses a simple array to store the default tweaks. However, this is open t
 ## Credits
 - [Codename Nugget](https://github.com/leminlimez/Nugget) for the exploit library and some UI components
 - [dootskyre](https://github.com/dootskyre) for the helper shortcut
-- Special thanks to [Lrdsnow](https://github.com/Lrdsnow), [Little_34306](https://github.com/34306), [BrocoDev](https://github.com/Broco8Dev), [MildPepperCat](https://github.com/ktrrbypass), and [lunginspector](https://github.com/lunginspector) for assistance and support.
+- Special thanks to [Lrdsnow](https://github.com/Lrdsnow), [Little_34306](https://github.com/34306), [MildPepperCat](https://github.com/ktrrbypass), and [lunginspector](https://github.com/lunginspector) for assistance and support.
 
 ### Disclaimer
 This project is intended for educational and personal purposes only. The code provided in this repository is designed to demonstrate the concepts of software exploitation and system vulnerabilities within a controlled, legal, and ethical environment.
